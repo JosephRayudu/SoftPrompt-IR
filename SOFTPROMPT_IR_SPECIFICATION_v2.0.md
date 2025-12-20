@@ -1035,7 +1035,7 @@ The empirical validation revealed distinct performance characteristics between c
 - Email: [contact]
 - Documentation: [docs.softprompt-ir.org]
 
-**License:** MIT (for open-source release)
+**License:** APACHE 2.0
 
 **Citation:**
 ```bibtex
