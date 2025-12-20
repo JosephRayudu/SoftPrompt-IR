@@ -7,9 +7,9 @@ It is a declarative intent representation for LLM behavior - a low level layer *
 
 # SoftPrompt-IR: Explicit Intent Weighting and Hierarchical Enforcement for LLM Prompts
 
-**Authors:** [Author Names]  
-**Affiliation:** [Institution]  
-**Contact:** [Email]  
+**Authors:** Tobias Geisler  
+**Affiliation:** Independent researcher  
+**Contact:** tobsgo1@gmail.com  
 **Date:** December 19, 2025
 
 ---
