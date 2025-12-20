@@ -1031,9 +1031,8 @@ The empirical validation revealed distinct performance characteristics between c
 ## END OF SPECIFICATION
 
 **For questions, issues, or contributions:**
-- GitHub: [SoftPrompt-IR Repository]
-- Email: [contact]
-- Documentation: [docs.softprompt-ir.org]
+- GitHub: https://github.com/tobs-code/SoftPrompt-IR
+- Email: tobsgo1@gmail.com
 
 **License:** APACHE 2.0
 
@@ -1041,7 +1040,7 @@ The empirical validation revealed distinct performance characteristics between c
 ```bibtex
 @techreport{softprompt-ir-2025,
   title={SoftPrompt-IR: Declarative Intermediate Representation for LLM Prompts},
-  author={[Author Names]},
+  author={[Tobias Geisler]},
   year={2025},
   institution={[Affiliation]},
   note={Version 2.0, Empirically Validated}
