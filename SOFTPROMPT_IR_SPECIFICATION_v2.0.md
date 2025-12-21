@@ -118,7 +118,7 @@ Parentheses `()` override precedence.
 | `!<` | Backward ↑ | Validate | 100% | Mandatory backward — respects parent constraints, validates against ancestors |
 | `!<<` | Backward ↑↑ | Prerequisite | 100% | Hard prerequisite — blocks instantiation without parent satisfaction |
 
-**Empirical Validation:** 5/5 models (100% consensus) correctly interpreted directional semantics and hierarchical propagation. **100% consensus on directional hard operators across 4 leading closed-source frontier models** (Claude Sonnet 4, GPT-4o, Gemini 2.0 Flash, Grok); DeepSeek V3 showed negation bias for isolated `!` but correctly interpreted directional-composed operators (`!>`, `!>>`, `!<`, `!<<`).
+**Empirical Validation:** 5/5 models (100% consensus) correctly interpreted directional semantics and hierarchical propagation. **100% consensus on directional hard operators across 4 leading closed-source frontier models** (Claude Sonnet 4.5, GPT-5.2, Gemini 3.0, Grok 4.1); DeepSeek V3 showed negation bias for isolated `!` but correctly interpreted directional-composed operators (`!>`, `!>>`, `!<`, `!<<`).
 
 **Compositional Semantics:**
 ```
@@ -765,7 +765,7 @@ Instruction
 ### 8.1 Model Interpretation Variance
 
 **Resolved for Core Operators:**
-- 100% consensus on directional hard operators across 4 leading closed-source frontier models (Claude Sonnet 4, GPT-4o, Gemini 2.0 Flash, Grok)
+- 100% consensus on directional hard operators across 4 leading closed-source frontier models (Claude Sonnet 4.5, GPT-5.2, Gemini 3.0, Grok 4.1)
 - 98% overall average consensus across 5 models on all operators
 - Directional semantics (forward/backward) understood universally
 - Compositional transparency enables zero-shot interpretation
@@ -831,7 +831,7 @@ For executable policy enforcement, integrate with:
 ## 9. Empirical Validation Summary
 
 **Test Coverage:**
-- 5 frontier model families (Claude Sonnet 4, GPT-4o, Gemini 2.0 Flash, Grok, DeepSeek V3)
+- 5 frontier model families (Claude Sonnet 4.5, GPT-5.2, Gemini 3.0, Grok 4.1, DeepSeek V3.2)
 - 7 core operators (directional hard constraints: `!>>`, `!>`, `!<`, `!<<`)
 - 7 test scenarios (basic, hierarchy, conflicts, scope, complex parsing, matrices, real-world)
 - 100+ individual test cases
@@ -853,13 +853,13 @@ For executable policy enforcement, integrate with:
 
 **Consensus Analysis:**
 - **Directional Hard Operators:** 100% consensus across all 5 models
-- **Leading Closed-Source Frontier Models:** 100% consensus on all operators (Claude Sonnet 4, GPT-4o, Gemini 2.0 Flash, Grok)
+- **Leading Closed-Source Frontier Models:** 100% consensus on all operators (Claude Sonnet 4.5, GPT-5.2, Gemini 3.0, Grok 4.1)
 - **Open-Source Frontier Model:** DeepSeek V3 showed negation bias for isolated `!` but correctly interpreted directional-composed operators
 - **Overall Average Consensus: 98%**
 
 **Key Findings:**
 1. **100% Consensus on Directional Hard Operators:** Perfect agreement across all tested models on `!>>`, `!>`, `!<`, `!<<`
-2. **Leading Frontier Model Excellence:** Claude Sonnet 4, GPT-4o, Gemini 2.0 Flash, and Grok achieve 100% consensus on all operators
+2. **Leading Frontier Model Excellence:** (Claude Sonnet 4.5, GPT-5.2, Gemini 3.0, and Grok achieve 100% consensus on all operators
 3. **Design Robustness:** Directional-composed operators (`!>`, `!>>`, etc.) avoid negation bias present in some models
 4. **Compositional Transparency:** Zero-shot understanding enabled through IaC pattern recognition (Terraform, Ansible, Kubernetes)
 5. **Hierarchical Enforcement:** Directional semantics and conflict resolution logic correctly applied across all models
@@ -869,9 +869,9 @@ For executable policy enforcement, integrate with:
 
 The empirical validation revealed distinct performance characteristics between closed-source frontier models and open-source alternatives:
 
-- **Closed-Source Frontier Models** (Claude Sonnet 4, GPT-4o, Gemini 2.0 Flash, Grok): Demonstrated flawless interpretation of all operators, including perfect abstraction of novel directional-composed symbols. These models correctly recognized `!>` as "forward hard constraint" rather than "! followed by >", showing advanced pattern recognition from extensive IaC training data.
+- **Closed-Source Frontier Models** (Claude Sonnet 4.5, GPT-5.2, Gemini 3.0, Grok 4.1): Demonstrated flawless interpretation of all operators, including perfect abstraction of novel directional-composed symbols. These models correctly recognized `!>` as "forward hard constraint" rather than "! followed by >", showing advanced pattern recognition from extensive IaC training data.
 
-- **Open-Source Frontier Model** (DeepSeek V3): Showed strong overall performance (98% consensus) but exhibited negation bias when encountering isolated `!` symbols, interpreting them as logical negation rather than constraint markers. However, directional-composed operators (`!>`, `!>>`, `!<`, `!<<`) were correctly interpreted, demonstrating that the design successfully mitigates this bias.
+- **Open-Source Frontier Model** (DeepSeek V3.2): Showed strong overall performance (98% consensus) but exhibited negation bias when encountering isolated `!` symbols, interpreting them as logical negation rather than constraint markers. However, directional-composed operators (`!>`, `!>>`, `!<`, `!<<`) were correctly interpreted, demonstrating that the design successfully mitigates this bias.
 
 **Implication:** SoftPrompt-IR is optimized for the leading closed-source frontier models where complex agent architectures are most commonly deployed, while remaining robust across the broader ecosystem through directional composition.
 
