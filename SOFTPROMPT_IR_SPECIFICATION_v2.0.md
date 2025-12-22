@@ -848,7 +848,8 @@ For executable policy enforcement, integrate with:
 | `??` | 5/5 | 100% | ✅ Validated | Perfect consensus across all models |
 | `::` | 5/5 | 100% | ✅ Validated | Perfect consensus across all models |
 | `→` | 5/5 | 100% | ✅ Validated | Perfect consensus across all models |
-| `>>` | 4/5 | 80% | ⚠️ Validated | Some sequence confusion (not directional precedence) |
+| `>>` | 4/5 | 80% | ⚠️ Validated | Unweighted structural operators show occasional role ambiguity;
+weighted operators (!, ~) eliminate it. |
 | `AND/OR/NOT` | 5/5 | 100% | ✅ Validated | Perfect consensus across all models |
 
 **Consensus Analysis:**
