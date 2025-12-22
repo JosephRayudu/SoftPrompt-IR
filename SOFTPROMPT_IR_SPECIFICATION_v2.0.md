@@ -855,7 +855,7 @@ weighted operators (!, ~) eliminate it. |
 **Consensus Analysis:**
 - **Directional Hard Operators:** 100% consensus across all 5 models
 - **Leading Closed-Source Frontier Models:** 100% consensus on all operators (Claude Sonnet 4.5, GPT-5.2, Gemini 3.0, Grok 4.1)
-- **Open-Source Frontier Model:** DeepSeek V3 showed negation bias for isolated `!` but correctly interpreted directional-composed operators
+- **Open-Source Frontier Model:** DeepSeek V3.2 showed negation bias for isolated `!` but correctly interpreted directional-composed operators
 - **Overall Average Consensus: 98%**
 
 **Key Findings:**
