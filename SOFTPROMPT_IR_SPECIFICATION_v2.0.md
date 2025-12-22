@@ -890,7 +890,10 @@ The empirical validation revealed distinct performance characteristics between c
 **Version 1.x Compatibility:**
 - Core operators (`!>`, `~>`, `??`, `::`, `>>`, `→`, `AND`, `OR`, `NOT`) unchanged
 - `!` operator clarified (local mandatory, not negation)
-- Breaking change: Removed `!` prefix as "hard constraint" (use `!>` instead)
+- Breaking change:
+The isolated `!` operator is no longer recommended as a primary hard constraint
+due to collision with learned boolean negation in some models.
+Use directional-bound operators (`!>`, `!>>`) for deterministic intent encoding.
 
 **Migration from v1.x:**
 ```
