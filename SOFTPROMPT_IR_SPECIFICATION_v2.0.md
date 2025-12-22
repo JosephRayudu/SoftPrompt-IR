@@ -11,7 +11,7 @@
 
 SoftPrompt-IR (Soft Prompt Intermediate Representation) is a declarative, symbolic intermediate representation for encoding instruction priority, constraint strength, and hierarchical enforcement in Large Language Model (LLM) prompts. 
 
-Through empirical cross-model validation, SoftPrompt-IR achieves **100% consensus on directional hard operators across four leading closed-source frontier models** (Claude Sonnet 4, GPT-4o, Gemini 2.0 Flash, Grok) and **98% overall cross-model consensus** across five frontier model families on a complete bidirectional policy enforcement framework comprising seven core operators with compositional transparency.
+Through empirical cross-model validation, SoftPrompt-IR achieves **100% consensus on directional hard operators across four leading closed-source frontier models** (Claude Sonnet 4.5, GPT-4o, Gemini 2.0 Flash, Grok) and **98% overall cross-model consensus** across five frontier model families on a complete bidirectional policy enforcement framework comprising seven core operators with compositional transparency.
 
 SoftPrompt-IR enables explicit representation of:
 - Hard constraints with directional propagation
