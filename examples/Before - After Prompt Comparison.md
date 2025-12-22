@@ -1,72 +1,124 @@
-# SoftPrompt-IR: Von impliziter Absicht zu expliziter Struktur
+## SoftPrompt-IR: From Implicit Intent to Explicit Structure
 
-Dieser Abschnitt vergleicht die ursprüngliche Anweisung (Natural Language) mit der strukturierten Darstellung (SoftPrompt-IR) und erläutert die Vorteile dieser Methode.
+This section compares a traditional natural-language instruction style with a SoftPrompt-IR representation and explains **why explicit weighting matters**.
 
-## 1. Vergleich der Anweisungsstile
+---
 
-### ❌ Vorher (Natürliche Sprache, Hoher Rauschpegel)
+## 1. Comparing Instruction Styles
 
-Die Anweisungen im ursprünglichen Stil waren wie folgt formuliert:
+### ❌ Before
 
-*   Bitte vermeiden Sie blumige Sprache.
-*   Versuchen Sie, keine Klischees zu verwenden.
-*   Übererklären Sie Dinge nicht.
-*   Seien Sie klar und prägnant.
-*   Konzentrieren Sie sich auf den Hauptpunkt.
+**Natural Language (High Noise)**
 
-### Probleme des vorherigen Stils
+The original instructions might look like this:
 
-Dieser Stil führte zu folgenden Problemen:
+* Please avoid flowery language.
+* Try not to use clichés.
+* Don’t over-explain things.
+* Be clear and concise.
+* Focus on the main point.
 
-*   **Repetition:** Wiederholungen in der Formulierung.
-*   **Ambiguous Priority:** Die Priorität der Anweisungen war nicht klar definiert.
-*   **Conflicting Signals:** Mögliche widersprüchliche Signale für das Modell.
-*   **Weight is implicit:** Die Gewichtung der einzelnen Anweisungen war implizit.
+#### Problems with this style
 
-### ✅ Nachher (SoftPrompt-IR)
+* **Repetition**: Similar ideas expressed multiple times
+* **Ambiguous priority**: No clear signal which rule matters most
+* **Potential conflicts**: “Be concise” vs. “focus on the main point”
+* **Implicit weighting**: The model must infer importance from tone and wording
 
-Die gleiche Absicht wird durch eine strukturierte Darstellung ausgedrückt:
+All intent is present — but **none of it is ranked**.
 
-```
+---
+
+### ✅ After
+
+**SoftPrompt-IR (Explicit Structure)**
+
+The same intent expressed structurally:
+
+```text
 !~> AVOID_FLOWERY_STYLE
-~>  AVOID_CLICHES
+~>> AVOID_CLICHES
 ~>  LIMIT_EXPLANATION
 ```
 
-## 2. Analyse der Änderungen
+---
 
-### Was hat sich geändert?
+## 2. What Actually Changed
 
-Die Transformation bewirkt folgende Verbesserungen:
+### Same intent, different signal
 
-*   **Same intent:** Die ursprüngliche Absicht bleibt erhalten.
-*   **Explicit weighting:** Die Gewichtung wird explizit durch die Struktur (z.B. das `!~>` Präfix) dargestellt.
-*   **No prose to interpret:** Es gibt keinen interpretierbaren Fließtext mehr.
-*   **Lower entropy before decoding:** Die Mehrdeutigkeit wird reduziert, bevor die eigentliche Generierung beginnt.
+Nothing new was added.
+Nothing was removed.
 
-### Warum ist dies nicht „nur Formatierung“?
+What changed is **how intent is expressed**:
 
-Der Unterschied liegt in der Art der vermittelten Information:
+* **Same intent** — stylistic constraints still apply
+* **Explicit weighting** — relative importance is visible
+* **No prose to interpret** — no tone, no politeness, no ambiguity
+* **Lower entropy before decoding** — conflicts are resolved *before* sampling
 
-*   **BOLD TEXT** >> **emphasis is implicit** (Betonung ist implizit)
-*   **STRUCTURED TAG** >> **intent is explicit** (Absicht ist explizit)
+---
 
-## 3. Funktionsweise von SoftPrompt-IR
+## 3. Making Weighting Visible (Expanded Example)
 
-SoftPrompt-IR stützt sich **nicht** auf:
+Natural language collapses all constraints into a flat list.
+SoftPrompt-IR makes their **relative dominance explicit**.
 
-*   Spezielle Syntax
-*   Versteckte Semantik
-*   Neues Modelltraining (Model Retraining)
+```text
+!>>> PRIMARY_CONSTRAINT
+~>>  SECONDARY_STYLE_PREFERENCE
+~>   OPTIONAL_REFINEMENT
+```
 
-Es basiert stattdessen auf:
+Interpretation (informal):
 
-1.  **Consistency** (Konsistenz)
-2.  **Structure** (Struktur)
-3.  **Patterns already learned** (Bereits gelernte Muster, z.B. in Konfigurationen, Regeln oder Flags)
+* The first constraint dominates all others
+* Secondary preferences apply unless they conflict
+* Optional refinements are lowest priority
+
+There is:
+
+* no branching
+* no conditionals
+* no execution logic
+
+Only **relative weight and direction**.
+
+---
+
+## 4. Why This Is Not “Just Formatting”
+
+Compare the information content:
+
+* **Bold text** → emphasis is *implicit*
+* **Structured tags** → intent is *explicit*
+
+Formatting highlights text.
+SoftPrompt-IR **exposes structure**.
+
+The model no longer has to *guess* what matters more.
+
+---
+
+## 5. How SoftPrompt-IR Works (Conceptually)
+
+SoftPrompt-IR does **not** rely on:
+
+* special syntax rules
+* hidden semantics
+* model retraining
+
+It relies on three things LLMs already handle well:
+
+1. **Consistency** — repeated structural patterns
+2. **Hierarchy** — relative dominance signals
+3. **Learned conventions** — configs, rulesets, flags, priorities
+
+The symbols themselves are not magic.
+The **structure and weighting are the signal**.
 
 ---
 
 ## One-Sentence Summary
 
-**SoftPrompt-IR reduziert die Ambiguität vor dem Sampling, indem es implizite Absicht in explizite Struktur umwandelt.**
+**SoftPrompt-IR reduces ambiguity before sampling by turning implicit intent into explicit, weighted structure.**
