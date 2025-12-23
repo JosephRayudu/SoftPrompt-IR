@@ -222,36 +222,118 @@ These point **backwards** but are **soft** — avoid if possible, but not a hard
 
 ---
 
-### Reference Operator (`::`) — Binding & Context
+### Reference Operator (`::`) — Binding (No Weight, No Direction)
 
-The `::` operator **binds** something to a value or reference. Think of it like an electrical connection — it's either connected or it's not.
+The `::` operator is **not a strength operator** and **not a dependency operator**.
 
-**Critical Rule:** `::` always needs a strength operator in front of it!
+It has **one single purpose**:
 
-Why? Because the binding itself is neutral — the **strength operator determines how critical that connection is**.
+> **Bind one concept to another.**
 
-| Syntax | Meaning |
-|--------|---------|
-| `!>>> X :: value` | X is **absolutely bound** to value (non-negotiable) |
-| `!>> X :: value` | X is **strongly bound** to value |
-| `!> X :: value` | X is **bound** to value (required) |
-| `~> X :: value` | ❌ **Doesn't make sense** — "optionally connected"? |
+That’s it.
 
-Think of it like wiring: you can't have a "maybe 5V or maybe not" connection. The wire is either there or it isn't. The strength operator defines how critical that wire is to the system.
+Think of `::` as a *wire* or *label* — it connects two things, but it does **not** say how strong, how important, or under which conditions that connection applies.
 
-**Example:**
+---
+
+### ❗ Critical Rule (Important for Beginners)
+
+**`::` never carries strength, weight, or direction.**
+It is **never combined** with arrows (`>`, `<`) or prefixes (`!`, `~`).
+
+Why?
+
+Because binding answers a different question than weighting.
+
+---
+
+### 🧠 Simple Mental Model
+
+SoftPrompt-IR separates intent into **two layers**:
+
+1. **Weighting / Priority**
+   → handled by `!`, `~`, `>>>`, `>>`, `>`, `<`, etc.
+
+2. **Binding / Association**
+   → handled by `::`
+
+These two concerns are **intentionally kept separate**.
+
+---
+
+### ✅ Correct Usage
+
 ```
 @CONTEXT(
-  !>>> USER :: example_user            ← User is definitely example_user
-  !>>  LANGUAGE :: german              ← Language is strongly bound to german
-  !>   DOMAIN :: software_development  ← Domain is bound to software dev
+  USER :: example_user
 )
 
-@CONFIG(
-  !>>> SOURCE :: company-style-guide.md   ← Config source is absolutely this file
-  !>>  SCHEMA :: openapi-spec.yaml        ← Schema is strongly bound to this spec
+@STYLE(
+  SOURCE :: company-style-guide.md
 )
 ```
+
+This simply means:
+
+* `USER` is bound to `example_user`
+* `SOURCE` is bound to `company-style-guide.md`
+
+No priority is implied.
+No strength is implied.
+No enforcement level is implied.
+
+Just a connection.
+
+---
+
+### ❌ Incorrect Usage (Do Not Do This)
+
+```
+!>>> USER :: example_user
+~>>  SOURCE :: style-guide.md
+```
+
+Why this is wrong:
+
+* `!>>>` and `~>>` express **priority**
+* `::` expresses **binding**
+* Mixing them creates semantic confusion
+
+Binding does not need intensity.
+A connection is either there — or it isn’t.
+
+---
+
+### 🧩 Why SoftPrompt-IR Works This Way
+
+If binding had strength, we would have to ask meaningless questions like:
+
+* “Is this *strongly* the user?”
+* “Is the file *optionally* the source?”
+
+That makes no sense.
+
+So SoftPrompt-IR keeps it clean:
+
+* **Operators (`!`, `~`, arrows)** → express *how important something is*
+* **Binding (`::`)** → expresses *what belongs together*
+
+---
+
+### 🧪 Beginner-Friendly Rule of Thumb
+
+If you are unsure, remember this:
+
+> **If you’re describing importance → use operators**
+> **If you’re describing identity or association → use `::`**
+
+Never both at once.
+
+---
+
+### 🧠 One-Line Summary 
+
+> **`::` does not say how much something matters — it only says what is connected to what.**
 
 ---
 
@@ -383,5 +465,6 @@ SoftPrompt-IR doesn't teach LLMs something new — it speaks a language they alr
 ---
 
 **Now imagine asking an LLM to guess your intent from prose... or just telling it explicitly.**
+
 
 Which would you trust more?
