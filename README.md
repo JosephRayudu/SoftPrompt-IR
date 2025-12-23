@@ -48,7 +48,7 @@ but to **reduce ambiguity, noise, and unintended behavior** *before sampling*.
 SoftPrompt-IR uses **small symbolic operators** to annotate intent along two axes:
 
 1. **Strength** (how much it should matter)
-2. **Direction** (enforce vs. avoid, local vs. downstream)
+2. **Direction** (enforce vs. avoid, downstream vs. blocking)
 
 It does **not** tell the model *what to do* —
 it tells the model **what matters more than what**.
@@ -67,7 +67,8 @@ Think of it as **weighting signals**, not commands.
 ~<<< PURPLE_PROSE
 ~<<  CLICHES
 ~<   OVER_EXPLAINING
-```
+````
+These are relative avoidance signals, not prohibitions.
 
 ### Interpretation (informal)
 
@@ -90,7 +91,7 @@ Only **probability shaping** via relative weight.
 SoftPrompt-IR is intentionally **asymmetric**.
 
 More symbols = more weight
-Earlier / stronger markers dominate weaker ones
+Stronger markers dominate weaker ones
 
 ```text
 !>>> PRIMARY_CONSTRAINT
@@ -108,30 +109,82 @@ No if/else.
 No branching.
 Just dominance.
 
+More weight only matters relative to other signals — stacking strength everywhere removes contrast and reduces its effect.
 ---
 
 ## Direction Matters
 
-Direction is part of the signal, not decoration.
+Direction is part of the signal — not decoration.
 
-Examples:
+In SoftPrompt-IR, **direction never stands alone**.
+It always modifies a **strength marker**.
+(Direction never modifies intent on its own — it always attaches to an intent marker.)
+
+### Canonical Form
+
+```
+[STRENGTH][DIRECTION]
+```
+
+Strength **always comes first**.
+Direction **always comes after**.
+
+---
+
+### Valid Examples
 
 ```text
 !>>> MUST_ENFORCE
 ~<<< STRONGLY_AVOID
 ~<   GENTLY_DE_ESCALATE
->>!  LOCAL_HARD_CONSTRAINT
 ```
 
 Informal intuition:
 
-* `>` pushes *forward / downstream*
-* `<` pulls *away / de-escalates*
-* repetition amplifies weight
-* prefix position implies scope
+* `>` pushes intent forward / downstream
+* `<` pulls intent away / de-escalates
+* repetition amplifies directional influence
+* strength determines enforcement level
 
-These are **not formal semantics** —
-they are **structural cues the model already recognizes**.
+---
+
+### Dependencies (Special Case)
+
+Dependencies are **explicit prerequisite signals**
+
+They are defined **only** like this:
+
+```text
+!<<< REQUIRED_CONDITION
+```
+
+Meaning:
+
+> This intent **cannot proceed unless** the requirement is satisfied.
+
+Dependencies are **not equivalent** to “strong backward preference”.
+They are a **separate semantic construct**.
+
+---
+
+### Invalid Forms (Do Not Use)
+
+```text
+>>! SOME_CONSTRAINT
+<<~ SOMETHING
+```
+
+Why these are invalid:
+
+* strength must not appear after direction
+* direction must not precede strength
+* there is no postfix weighting in SoftPrompt-IR
+
+---
+
+These signals are **not formal semantics** —
+they are **structural cues the model already recognizes** from rules, configs,
+policies, and priority annotations seen during training.
 
 ---
 
@@ -203,6 +256,10 @@ SoftPrompt-IR prioritizes:
 
 ---
 
+**SoftPrompt-IR is meant to annotate only the parts that tend to be misweighted, not every detail of a prompt.**
+
+---
+
 ## Status
 
 This is an **experimental specification**.
@@ -219,3 +276,5 @@ Just a small idea:
 
 If it feels obvious in hindsight —
 that means it’s probably at the right level 🙂
+
+```
