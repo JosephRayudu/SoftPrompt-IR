@@ -278,5 +278,3 @@ Just a small idea:
 
 If it feels obvious in hindsight —
 that means it’s probably at the right level 🙂
-
-```
